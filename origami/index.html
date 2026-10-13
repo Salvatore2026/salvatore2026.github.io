@@ -1,0 +1,532 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Origami Passo Passo</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#F3EBDD"><link rel="icon" href="icone/icona-192.png"><link rel="apple-touch-icon" href="icone/icona-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700&display=swap">
+<style>
+/* Layout: una sola colonna da telefono; il foglio di carta al centro, le didascalie sotto, i comandi in fondo. */
+:root{
+  --bg:#F3EBDD;        /* carta avana */
+  --bg2:#FFFBF2;       /* pannelli */
+  --fg:#2B2622;
+  --muted:#7A6E62;
+  --line:#D9CDB8;
+  --accent:#C8472F;    /* il rosso delle linee di piega */
+  --accent-fg:#FFFFFF;
+  --gold:#E0A526;
+  --shadow:rgba(60,40,10,.18);
+  --display:"Fredoka","Nunito",system-ui,sans-serif;
+  --body:"Nunito",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1E1B18; --bg2:#2A2622; --fg:#F1EAE0; --muted:#B5A999; --line:#443D35;
+  --accent:#E4654C; --accent-fg:#FFFFFF; --gold:#E8B445; --shadow:rgba(0,0,0,.5); color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#1E1B18; --bg2:#2A2622; --fg:#F1EAE0; --muted:#B5A999; --line:#443D35;
+  --accent:#E4654C; --accent-fg:#FFFFFF; --gold:#E8B445; --shadow:rgba(0,0,0,.5); color-scheme:dark }
+
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.4}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.app{max-width:560px;margin:0 auto;min-height:100%;padding:0 16px;padding-block:12px 24px;display:flex;flex-direction:column;gap:14px}
+.top{display:flex;align-items:center;gap:10px;min-height:44px}
+.top h1{font-family:var(--display);font-weight:600;font-size:1.5rem;margin:0;letter-spacing:.01em;text-wrap:balance;flex:1;min-width:0}
+.back{width:44px;height:44px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;flex:none;box-shadow:0 1px 2px var(--shadow)}
+.back svg{width:22px;height:22px;stroke:var(--fg);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin:4px 0 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{background:var(--bg2);border-radius:18px;padding:10px 10px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 1px 3px var(--shadow);text-align:center;position:relative}
+.tile canvas{width:100%;aspect-ratio:1;max-width:100%;border-radius:12px}
+.tile .nome{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.15;text-wrap:balance}
+.tile .meta{font-size:.8rem;color:var(--muted)}
+.cart{background:var(--bg2);border-radius:18px;padding:14px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px var(--shadow);text-align:left;width:100%}
+.cart .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none;font-family:var(--display);font-weight:700;font-size:1.4rem;color:#fff}
+.cart .t{flex:1;min-width:0}
+.cart .t b{font-family:var(--display);font-weight:600;font-size:1.15rem;display:block}
+.cart .t span{color:var(--muted);font-size:.9rem}
+.cart .pz{font-family:var(--display);font-weight:600;color:var(--accent);white-space:nowrap}
+.cart .pz.ok{color:var(--muted)}
+.stage{background:var(--bg2);border-radius:22px;box-shadow:0 1px 3px var(--shadow);padding:10px;position:relative}
+.stage canvas{width:100%;aspect-ratio:1;display:block;max-width:100%;border-radius:14px;touch-action:manipulation}
+.pill{position:absolute;top:18px;left:18px;background:var(--bg);color:var(--muted);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.cap{min-height:4.2em;font-size:1.12rem;line-height:1.38;text-wrap:pretty;padding:2px 4px}
+.cap b{font-family:var(--display);font-weight:600;color:var(--accent);margin-right:.35em}
+.ctrl{display:flex;gap:10px;align-items:center}
+.btn{height:52px;border-radius:16px;background:var(--bg2);box-shadow:0 1px 3px var(--shadow);display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:1.05rem;flex:1;min-width:0;padding:0 14px}
+.btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn.main{background:var(--accent);color:var(--accent-fg);flex:2}
+.btn.sq{flex:none;width:52px;padding:0}
+.btn[disabled]{opacity:.35;cursor:default}
+.dots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--accent)}
+.dots i.done{background:var(--gold)}
+.info{background:var(--bg2);border-radius:18px;padding:14px 16px;box-shadow:0 1px 3px var(--shadow);display:flex;flex-direction:column;gap:8px}
+.info h3{margin:0;font-family:var(--display);font-weight:600;font-size:1rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.info p{margin:0;text-wrap:pretty}
+.lock{background:var(--bg2);border-radius:22px;padding:22px 18px;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;box-shadow:0 1px 3px var(--shadow)}
+.lock .big{font-family:var(--display);font-weight:700;font-size:2.2rem;color:var(--accent);line-height:1}
+.note{font-size:.85rem;color:var(--muted);text-align:center}
+.hidden{display:none!important}
+@media (prefers-reduced-motion: reduce){ :root{--anim:0} }
+</style>
+
+<div class="app" id="app"></div>
+
+<script>
+'use strict';
+// ------------------------------------------------------------------ dati
+const CAT_URL = 'data/catalogo.json';
+const COLORI_CART = {halloween:'#E36A1E', natale:'#B9382B', liberi:'#3E7CB1', pasqua:'#7DAE4B'};
+const LETTERE = {halloween:'H', natale:'N', liberi:'L', pasqua:'P'};
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let catalogo = null;
+const cache = {};
+async function loadModel(c, key){
+  const id = c + '/' + key;
+  if(!cache[id]){
+    const r = await fetch('data/' + id + '.json'); const m = await r.json();
+    // immagini disegnate (una per passo + modello finito), se esistono
+    if(catalogo && (catalogo.immagini||[]).includes(id)){ try{ const ri = await fetch('data/img/' + id + '.json'); if(ri.ok){ const fit = await ri.json(); m.img = fit.steps; } }catch(e){} }
+    if(m.img){ await Promise.all(m.img.map(s=> new Promise(res=>{ const im=new Image(); im.onload=()=>{ s.el=im; res(); }; im.onerror=()=>res(); im.src=s.src; }))); }
+    cache[id] = m;
+  }
+  return cache[id];
+}
+function sbloccata(id){ try{ return localStorage.getItem('sblocco_' + id) === '1'; }catch(e){ return false; } }
+function sblocca(id){ try{ localStorage.setItem('sblocco_' + id, '1'); }catch(e){} }
+
+// ------------------------------------------------------------------ offerta (Google Play)
+// Quando l'app gira sul Play Store come app web impacchettata (TWA), l'offerta passa da Google Play
+// con la Digital Goods API e la Payment Request. Un prodotto per cartella (codici provvisori qui sotto,
+// da creare uguali nella Play Console). Se il negozio non c'e' (browser, prova) o il prodotto non esiste
+// ancora, la cartella si apre subito come prima.
+const PLAY_BILLING = 'https://play.google.com/billing';
+const PRODOTTI = {halloween:'cartella_halloween', natale:'cartella_natale', liberi:'cartella_liberi', pasqua:'cartella_pasqua'};
+let negozioP = null;
+function negozio(){
+  if(!negozioP) negozioP = (async()=>{
+    if(!('getDigitalGoodsService' in window) || !window.PaymentRequest) return null;
+    try{ return await window.getDigitalGoodsService(PLAY_BILLING); }catch(e){ return null; }
+  })();
+  return negozioP;
+}
+const dettagli = {};
+// il prodotto della Play Console; null se il negozio non c'e' o il prodotto non esiste ancora;
+// 'errore' se il negozio c'e' ma non risponde (senza rete, Google Play occupato)
+async function dettaglioOfferta(id){
+  if(id in dettagli && dettagli[id]!=='errore') return dettagli[id];
+  const svc = await negozio(); let d = null;
+  if(svc && PRODOTTI[id]){ try{ const r = await svc.getDetails([PRODOTTI[id]]); d = (r && r[0]) || null; }catch(e){ d = 'errore'; } }
+  dettagli[id] = d; return d;
+}
+function prezzoDa(d, riserva){
+  try{ return new Intl.NumberFormat('it-IT',{style:'currency',currency:d.price.currency}).format(Number(d.price.value)); }catch(e){ return riserva; }
+}
+// conferma a Google Play un'offerta fatta: se non arriva entro tre giorni Google la annulla.
+// Con Chrome recente la conferma la fa gia' Chrome da solo; qui si fa anche a mano dove il telefono lo permette.
+async function conferma(svc, token){
+  if(!svc || !token || typeof svc.acknowledge!=='function') return;
+  try{ await svc.acknowledge(token, 'onetime'); }catch(e){}   // gia' confermata, o non serve: va bene lo stesso
+}
+// riapre le cartelle gia' prese con un'offerta (anche dopo aver reinstallato l'app o cambiato telefono)
+async function ripristinaOfferte(){
+  const svc = await negozio(); if(!svc) return false; let nuove=false;
+  try{
+    const acq = await svc.listPurchases();
+    for(const p of acq||[]){
+      for(const id in PRODOTTI) if(PRODOTTI[id]===p.itemId && !sbloccata(id)){ sblocca(id); nuove=true; }
+      if(p.acknowledged===false) conferma(svc, p.purchaseToken);
+    }
+  }catch(e){}
+  return nuove;
+}
+// ritorna 'aperta' se la cartella e' aperta, 'annullata' se il grande ci ripensa,
+// 'rete' se Google Play non risponde, 'errore' se qualcosa va storto
+async function faiOfferta(id){
+  const d = await dettaglioOfferta(id);
+  if(d==='errore'){ delete dettagli[id]; return 'rete'; }
+  if(!d){ sblocca(id); return 'aperta'; }          // negozio assente o prodotto non ancora creato: come oggi
+  const svc = await negozio();
+  try{
+    const req = new PaymentRequest([{supportedMethods: PLAY_BILLING, data:{sku: PRODOTTI[id]}}],
+                                   {total:{label:'Cartella', amount:{currency: d.price.currency, value: d.price.value}}});
+    const resp = await req.show();
+    const token = resp && resp.details && resp.details.purchaseToken;
+    await resp.complete('success');
+    sblocca(id);
+    conferma(svc, token);
+    return 'aperta';
+  }catch(e){
+    // la cartella e' gia' stata presa (per esempio su un altro telefono): si riapre senza una seconda offerta
+    if(await ripristinaOfferte() || sbloccata(id)) return 'aperta';
+    return (e && e.name==='AbortError') ? 'annullata' : 'errore';
+  }
+}
+
+// ------------------------------------------------------------------ geometria
+function sideOf(p,a,b){ return (b[0]-a[0])*(p[1]-a[1]) - (b[1]-a[1])*(p[0]-a[0]); }
+function reflect(p,a,b){
+  const dx=b[0]-a[0], dy=b[1]-a[1], d2=dx*dx+dy*dy;
+  const t=((p[0]-a[0])*dx+(p[1]-a[1])*dy)/d2;
+  const px=a[0]+t*dx, py=a[1]+t*dy;
+  return [2*px-p[0], 2*py-p[1]];
+}
+function area(poly){ let s=0; for(let i=0;i<poly.length;i++){ const p=poly[i], q=poly[(i+1)%poly.length]; s+=p[0]*q[1]-q[0]*p[1]; } return Math.abs(s)/2; }
+function centroid(poly){
+  let a=0,cx=0,cy=0; for(let i=0;i<poly.length;i++){ const p=poly[i], q=poly[(i+1)%poly.length]; const cr=p[0]*q[1]-q[0]*p[1]; a+=cr; cx+=(p[0]+q[0])*cr; cy+=(p[1]+q[1])*cr; }
+  if(Math.abs(a)<1e-12){ return [poly.reduce((s,p)=>s+p[0],0)/poly.length, poly.reduce((s,p)=>s+p[1],0)/poly.length]; }
+  a*=.5; return [cx/(6*a), cy/(6*a)];
+}
+// la retta a->b dentro la carta (per disegnare la linea di piega)
+function lineInside(faces,a,b){
+  const ax=a[0], ay=a[1], dx=b[0]-ax, dy=b[1]-ay, L=Math.hypot(dx,dy), ux=dx/L, uy=dy/L;
+  const ts=[];
+  for(const f of faces){
+    const hits=[]; const n=f.p.length;
+    for(let i=0;i<n;i++){
+      const p=f.p[i], q=f.p[(i+1)%n]; const d1=sideOf(p,a,b), d2=sideOf(q,a,b);
+      if((d1>1e-12&&d2<-1e-12)||(d1<-1e-12&&d2>1e-12)){ const t=d1/(d1-d2); const ip=[p[0]+(q[0]-p[0])*t, p[1]+(q[1]-p[1])*t]; hits.push((ip[0]-ax)*ux+(ip[1]-ay)*uy); }
+      else if(Math.abs(d1)<=1e-12){ hits.push((p[0]-ax)*ux+(p[1]-ay)*uy); }
+    }
+    if(hits.length>=2) ts.push([Math.min(...hits), Math.max(...hits)]);
+  }
+  if(!ts.length) return [];
+  ts.sort((u,v)=>u[0]-v[0]); const m=[ts[0].slice()];
+  for(let i=1;i<ts.length;i++){ const [s,e]=ts[i]; if(s<=m[m.length-1][1]+1e-9) m[m.length-1][1]=Math.max(m[m.length-1][1],e); else m.push([s,e]); }
+  return m.map(([s,e])=>[[ax+ux*s,ay+uy*s],[ax+ux*e,ay+uy*e]]);
+}
+function bboxFaces(faces,bb){ for(const f of faces) for(const p of f.p){ bb[0]=Math.min(bb[0],p[0]); bb[1]=Math.min(bb[1],p[1]); bb[2]=Math.max(bb[2],p[0]); bb[3]=Math.max(bb[3],p[1]); } }
+function bboxOps(ops,bb){
+  for(const o of ops){
+    if(o.t==='poly') for(const p of o.p){ bb[0]=Math.min(bb[0],p[0]); bb[1]=Math.min(bb[1],p[1]); bb[2]=Math.max(bb[2],p[0]); bb[3]=Math.max(bb[3],p[1]); }
+    else if(o.t==='line') for(const p of [o.p,o.q]){ bb[0]=Math.min(bb[0],p[0]); bb[1]=Math.min(bb[1],p[1]); bb[2]=Math.max(bb[2],p[0]); bb[3]=Math.max(bb[3],p[1]); }
+    else if(o.t==='circle'){ bb[0]=Math.min(bb[0],o.c[0]-o.r); bb[1]=Math.min(bb[1],o.c[1]-o.r); bb[2]=Math.max(bb[2],o.c[0]+o.r); bb[3]=Math.max(bb[3],o.c[1]+o.r); }
+    else if(o.t==='path') for(const seg of o.d) for(const p of seg.slice(1)){ bb[0]=Math.min(bb[0],p[0]); bb[1]=Math.min(bb[1],p[1]); bb[2]=Math.max(bb[2],p[0]); bb[3]=Math.max(bb[3],p[1]); }
+  }
+}
+function modelBBox(m){
+  const bb=[Infinity,Infinity,-Infinity,-Infinity];
+  bboxFaces(m.start,bb);
+  for(const s of m.steps){ bboxFaces(s.before,bb); bboxFaces(s.after,bb); }
+  bboxOps(m.finale_ops,bb);
+  return bb;
+}
+function shade(hex,k){ // k<1 scurisce, k>1 schiarisce
+  const n=parseInt(hex.slice(1),16); let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+  const f=v=>Math.max(0,Math.min(255,Math.round(k>=1? v+(255-v)*(k-1) : v*k)));
+  return 'rgb('+f(r)+','+f(g)+','+f(b)+')';
+}
+
+// distanza tra due colori #RRGGBB (0 = uguali)
+function vicinoA(a,b){
+  const rgb=x=>{ x=String(x||'').replace('#',''); return x.length===6? [0,2,4].map(i=>parseInt(x.slice(i,i+2),16)) : null; };
+  const p=rgb(a), q=rgb(b); if(!p||!q) return 999;
+  return Math.hypot(p[0]-q[0], p[1]-q[1], p[2]-q[2]);
+}
+// ------------------------------------------------------------------ disegno
+const INK='#22222A', CREASE='rgba(40,34,30,.35)', GUIDE='#D94F3D';
+class View{
+  constructor(canvas, model){
+    this.cv=canvas; this.m=model; this.ctx=canvas.getContext('2d');
+    const bb=modelBBox(model); const w=bb[2]-bb[0], h=bb[3]-bb[1];
+    this.cx=(bb[0]+bb[2])/2; this.cy=(bb[1]+bb[3])/2; this.span=Math.max(w,h)*1.18+0.3;
+    // carta rossa o arancione: la linea di piega rossa avrebbe bisogno di un bordino bianco per vedersi
+    this.alone=[model.front, model.back].some(col=>vicinoA(col, GUIDE)<75);
+    this.resize();
+  }
+  resize(){
+    const r=this.cv.getBoundingClientRect(); const dpr=Math.min(2.5,devicePixelRatio||1);
+    const size=Math.max(10,Math.round(r.width)); this.cv.width=size*dpr; this.cv.height=size*dpr;
+    this.px=size*dpr; this.k=this.px/this.span;
+  }
+  X(x){ return (x-this.cx)*this.k + this.px/2; }
+  Y(y){ return this.px/2 - (y-this.cy)*this.k; }
+  clear(){ this.ctx.clearRect(0,0,this.px,this.px); }
+  path(pts){ const c=this.ctx; c.beginPath(); pts.forEach((p,i)=> i? c.lineTo(this.X(p[0]),this.Y(p[1])) : c.moveTo(this.X(p[0]),this.Y(p[1]))); c.closePath(); }
+  // facce: {p,l,s} ; ombra sotto il modello
+  drawFaces(faces, opts={}){
+    const c=this.ctx, m=this.m; const sorted=faces.slice().sort((u,v)=>u.l-v.l);
+    if(opts.shadow!==false){
+      c.save(); c.shadowColor='rgba(40,25,5,.28)'; c.shadowBlur=this.k*0.08; c.shadowOffsetY=this.k*0.04;
+      c.fillStyle='rgba(0,0,0,0.001)'; for(const f of sorted){ this.path(f.p); c.fill(); } c.restore();
+    }
+    c.lineJoin='round';
+    // alone scuro = contorno della sagoma
+    c.strokeStyle=INK; c.lineWidth=this.k*0.035; c.fillStyle=INK;
+    for(const f of sorted){ this.path(f.p); c.fill(); c.stroke(); }
+    for(const f of sorted){ this.path(f.p); c.fillStyle = f.s>0? m.front : m.back; if(opts.tint) c.fillStyle=opts.tint(f); c.fill(); }
+    c.strokeStyle=CREASE; c.lineWidth=this.k*0.012;
+    for(const f of sorted){ this.path(f.p); c.stroke(); }
+  }
+  dashedLine(p,q,kind){
+    const c=this.ctx; c.save(); c.strokeStyle=GUIDE; c.lineWidth=this.k*0.024; c.lineCap='round';
+    c.setLineDash(kind==='monte'? [this.k*.11,this.k*.045,this.k*.02,this.k*.045] : [this.k*.075,this.k*.05]);
+    c.beginPath(); c.moveTo(this.X(p[0]),this.Y(p[1])); c.lineTo(this.X(q[0]),this.Y(q[1]));
+    if(this.alone){ c.save(); c.strokeStyle='#fff'; c.lineWidth=this.k*0.046; c.stroke(); c.restore(); }
+    c.stroke(); c.restore();
+  }
+  arrow(from,to,over){
+    const c=this.ctx; const mx=(from[0]+to[0])/2, my=(from[1]+to[1])/2; const vx=to[0]-from[0], vy=to[1]-from[1];
+    const L=Math.hypot(vx,vy)||1; const nx=-vy/L, ny=vx/L; const bul=0.42*L*(over?1:-1);
+    const ctl=[mx+nx*bul, my+ny*bul];
+    c.save(); c.strokeStyle=GUIDE; c.fillStyle=GUIDE; c.lineWidth=this.k*0.03; c.lineCap='round';
+    c.beginPath(); c.moveTo(this.X(from[0]),this.Y(from[1])); c.quadraticCurveTo(this.X(ctl[0]),this.Y(ctl[1]),this.X(to[0]),this.Y(to[1]));
+    if(this.alone){ c.save(); c.strokeStyle='#fff'; c.lineWidth=this.k*0.054; c.stroke(); c.restore(); }
+    c.stroke();
+    // punta
+    const tx=to[0]-ctl[0], ty=to[1]-ctl[1]; const tl=Math.hypot(tx,ty)||1; const ux=tx/tl, uy=ty/tl; const px=-uy, py=ux; const s=0.13;
+    const tip=to, a=[to[0]-ux*s+px*s*.45, to[1]-uy*s+py*s*.45], b=[to[0]-ux*s-px*s*.45, to[1]-uy*s-py*s*.45];
+    c.beginPath(); c.moveTo(this.X(tip[0]),this.Y(tip[1])); c.lineTo(this.X(a[0]),this.Y(a[1])); c.lineTo(this.X(b[0]),this.Y(b[1])); c.closePath();
+    if(this.alone){ c.save(); c.strokeStyle='#fff'; c.lineWidth=this.k*0.03; c.lineJoin='round'; c.stroke(); c.restore(); }
+    if(!over){ c.fillStyle='#fff'; c.fill(); c.stroke(); } else c.fill();
+    c.restore();
+  }
+  // linea di piega + freccia sopra lo stato "before"
+  drawGuide(faces, fo){
+    let segs=lineInside(faces, fo.a, fo.b);
+    if(fo.seg){ // piega che passa solo tra a e b
+      const dx=fo.b[0]-fo.a[0], dy=fo.b[1]-fo.a[1], L2=dx*dx+dy*dy, t=p=>((p[0]-fo.a[0])*dx+(p[1]-fo.a[1])*dy)/L2, at=u=>[fo.a[0]+dx*u, fo.a[1]+dy*u];
+      segs=segs.map(([p,q])=>{ const u0=Math.max(0,Math.min(t(p),t(q))), u1=Math.min(1,Math.max(t(p),t(q))); return u1>u0? [at(u0),at(u1)] : null; }).filter(Boolean);
+    }
+    for(const [p,q] of segs) this.dashedLine(p,q, fo.over? 'valle':'monte');
+    let best=null, ba=0; for(const f of fo.moving){ const ar=area(f.p); if(ar>ba){ ba=ar; best=f.p; } }
+    if(best){ const an=centroid(best); this.arrow(an, reflect(an,fo.a,fo.b), fo.over); }
+  }
+  // animazione: lembo che ruota di theta attorno alla retta
+  drawFold(fo, theta){
+    const c=this.ctx, m=this.m; const a=fo.a,b=fo.b; const dx=b[0]-a[0], dy=b[1]-a[1]; const L=Math.hypot(dx,dy); const ux=dx/L, uy=dy/L; const nx=-uy, ny=ux;
+    const cosT=Math.cos(theta), sinT=Math.sin(theta);
+    const flap=fo.moving.map(f=>{
+      const pts=f.p.map(p=>{ const rx=p[0]-a[0], ry=p[1]-a[1]; const t=rx*ux+ry*uy, d=rx*nx+ry*ny; return [a[0]+ux*t+nx*d*cosT, a[1]+uy*t+ny*d*cosT, d*sinT]; });
+      return {p:pts.map(q=>[q[0],q[1]]), z:pts.reduce((s,q)=>s+q[2],0)/pts.length, l:f.l, s: cosT>=0? f.s : -f.s};
+    });
+    const lift = fo.over ? 1 : -1;  // sopra o sotto il foglio
+    const drawFlap=()=>{
+      const sorted=flap.slice().sort((u,v)=> (cosT>=0? u.l-v.l : v.l-u.l));
+      const lum = 1 - 0.25*Math.abs(sinT);
+      c.save();
+      if(lift>0){ c.shadowColor='rgba(40,25,5,'+(0.35*Math.abs(sinT))+')'; c.shadowBlur=this.k*0.12*Math.abs(sinT); c.shadowOffsetY=this.k*0.06*Math.abs(sinT); }
+      c.strokeStyle=INK; c.lineWidth=this.k*0.035; c.fillStyle=INK; c.lineJoin='round';
+      for(const f of sorted){ if(area(f.p)<1e-6) continue; this.path(f.p); c.fill(); c.stroke(); }
+      c.shadowColor='transparent';
+      for(const f of sorted){ if(area(f.p)<1e-6) continue; this.path(f.p); c.fillStyle=shade(f.s>0? m.front : m.back, lum); c.fill(); }
+      c.strokeStyle=CREASE; c.lineWidth=this.k*0.012; for(const f of sorted){ if(area(f.p)<1e-6) continue; this.path(f.p); c.stroke(); }
+      c.restore();
+    };
+    if(lift<0) drawFlap();
+    this.drawFaces(fo.staying);
+    if(lift>0) drawFlap();
+  }
+  // immagine disegnata: la sua sagoma (box, in frazioni dell'immagine) viene fatta coincidere
+  // con il riquadro delle facce, cosi' linee di piega e frecce cadono al posto giusto
+  drawImage(img, faces){
+    if(!img || !img.el) return false;
+    const bb=[Infinity,Infinity,-Infinity,-Infinity]; bboxFaces(faces,bb);
+    if(!isFinite(bb[0])) return false;
+    const [bx0,by0,bx1,by1]=img.box; const W=img.el.naturalWidth, H=img.el.naturalHeight;
+    const sx=(this.X(bb[2])-this.X(bb[0]))/((bx1-bx0)*W);   // px canvas per px immagine
+    const sy=(this.Y(bb[1])-this.Y(bb[3]))/((by1-by0)*H);
+    const dx=this.X(bb[0])-bx0*W*sx, dy=this.Y(bb[3])-by0*H*sy;
+    const c=this.ctx; c.save(); c.imageSmoothingQuality='high';
+    c.drawImage(img.el, 0,0,W,H, dx,dy, W*sx, H*sy); c.restore();
+    return true;
+  }
+  drawFlip(faces, axis, theta){
+    const c=this.ctx, m=this.m; const cosT=Math.cos(theta);
+    const fl=faces.map(f=>({p:f.p.map(p=> axis==='v'? [p[0]*cosT,p[1]] : [p[0],p[1]*cosT]), l:f.l, s: cosT>=0? f.s:-f.s}));
+    const sorted=fl.sort((u,v)=> cosT>=0? u.l-v.l : v.l-u.l);
+    const lum=1-0.2*Math.abs(Math.sin(theta));
+    c.save(); c.lineJoin='round'; c.strokeStyle=INK; c.lineWidth=this.k*0.035; c.fillStyle=INK;
+    for(const f of sorted){ if(area(f.p)<1e-6) continue; this.path(f.p); c.fill(); c.stroke(); }
+    for(const f of sorted){ if(area(f.p)<1e-6) continue; this.path(f.p); c.fillStyle=shade(f.s>0? m.front:m.back, lum); c.fill(); }
+    c.strokeStyle=CREASE; c.lineWidth=this.k*0.012; for(const f of sorted){ if(area(f.p)<1e-6) continue; this.path(f.p); c.stroke(); }
+    c.restore();
+  }
+  drawTurn(faces, deg){
+    const r=deg*Math.PI/180, co=Math.cos(r), si=Math.sin(r);
+    this.drawFaces(faces.map(f=>({p:f.p.map(p=>[p[0]*co-p[1]*si, p[0]*si+p[1]*co]), l:f.l, s:f.s})));
+  }
+  drawOps(ops){
+    const c=this.ctx; c.save(); c.lineJoin='round'; c.lineCap='round';
+    c.shadowColor='rgba(40,25,5,.25)'; c.shadowBlur=this.k*0.08; c.shadowOffsetY=this.k*0.04; let first=true;
+    for(const o of ops){
+      if(o.t==='poly'){ this.path(o.p); if(o.f){ c.fillStyle=o.f; c.fill(); } if(o.s){ c.strokeStyle=o.s; c.lineWidth=this.k*o.w; c.stroke(); } }
+      else if(o.t==='line'){ c.beginPath(); c.moveTo(this.X(o.p[0]),this.Y(o.p[1])); c.lineTo(this.X(o.q[0]),this.Y(o.q[1])); c.strokeStyle=o.s||INK; c.lineWidth=this.k*o.w; c.setLineDash(o.d? o.d.map(v=>v*this.k):[]); c.stroke(); c.setLineDash([]); }
+      else if(o.t==='circle'){ c.beginPath(); c.arc(this.X(o.c[0]),this.Y(o.c[1]),o.r*this.k,0,Math.PI*2); if(o.f){ c.fillStyle=o.f; c.fill(); } if(o.s){ c.strokeStyle=o.s; c.lineWidth=this.k*o.w; c.stroke(); } }
+      else if(o.t==='path'){ c.beginPath(); for(const seg of o.d){ const k=seg[0]; if(k==='M') c.moveTo(this.X(seg[1][0]),this.Y(seg[1][1])); else if(k==='L') c.lineTo(this.X(seg[1][0]),this.Y(seg[1][1])); else if(k==='Q') c.quadraticCurveTo(this.X(seg[1][0]),this.Y(seg[1][1]),this.X(seg[2][0]),this.Y(seg[2][1])); else if(k==='C') c.bezierCurveTo(this.X(seg[1][0]),this.Y(seg[1][1]),this.X(seg[2][0]),this.Y(seg[2][1]),this.X(seg[3][0]),this.Y(seg[3][1])); else if(k==='Z') c.closePath(); }
+        if(o.f){ c.fillStyle=o.f; c.fill(); } if(o.s){ c.strokeStyle=o.s; c.lineWidth=this.k*o.w; c.stroke(); } }
+      else if(o.t==='text'){ c.fillStyle=o.f||INK; c.font='bold '+(o.size*this.k)+'px '+getComputedStyle(document.body).fontFamily; c.textAlign=o.a==='middle'?'center':o.a; c.fillText(o.s,this.X(o.p[0]),this.Y(o.p[1])); }
+      if(first){ c.shadowColor='transparent'; first=false; }
+    }
+    c.restore();
+  }
+}
+
+// ------------------------------------------------------------------ player di un modello
+const ease=t=> t<.5? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+class Player{
+  constructor(view, model, onChange){
+    this.v=view; this.m=model; this.i=0; this.onChange=onChange; this.raf=0; this.gen=0; this.creases=[];
+  }
+  get n(){ return this.m.steps.length+1; }   // +1 = modello finito
+  stop(){ this.gen++; cancelAnimationFrame(this.raf); }
+  wait(ms){ const g=this.gen; return new Promise(r=>{ const t0=performance.now(); const f=now=>{ if(g!==this.gen) return; if(now-t0>=ms) r(true); else this.raf=requestAnimationFrame(f); }; this.raf=requestAnimationFrame(f); }); }
+  tween(ms, fn){ const g=this.gen; return new Promise(r=>{ const t0=performance.now(); const f=now=>{ if(g!==this.gen) return; const t=Math.min(1,(now-t0)/ms); fn(ease(t)); if(t<1) this.raf=requestAnimationFrame(f); else r(true); }; this.raf=requestAnimationFrame(f); }); }
+  go(i){ this.i=Math.max(0,Math.min(this.n-1,i)); this.play(); }
+  async play(anim){
+    this.stop(); const g=this.gen; const v=this.v, m=this.m, st=m.steps[this.i];
+    this.onChange && this.onChange(this);
+    const D = REDUCED? 0 : 1;
+    const img = m.img && m.img[this.i];
+    if(!anim && img && img.el){
+      v.clear();
+      if(!st){ if(!v.drawImage(img, m.final)) v.drawOps(m.finale_ops); return; }
+      if(v.drawImage(img, st.before)){
+        if(st.folds) for(const fo of st.folds) v.drawGuide(st.before, fo);
+        if(st.kind==='cut' && st.segs) for(const [p,q] of st.segs) v.dashedLine(p,q,'valle');
+        return;
+      }
+    }
+    if(!st){ v.clear(); v.drawOps(m.finale_ops); return; }
+    const showBefore=(guides)=>{ v.clear(); v.drawFaces(st.before); if(guides) for(const fo of guides) v.drawGuide(st.before, fo); };
+    const showAfter=()=>{ v.clear(); v.drawFaces(st.after); };
+    if(st.kind==='fold' || st.kind==='mark' || st.kind==='multi'){
+      const folds=st.folds||[];
+      showBefore(folds);
+      if(!await this.wait(900*D)) return;
+      for(const fo of folds){
+        const isMark = !!fo.mark;
+        if(isMark){
+          if(!await this.tween(700*D, t=>{ v.clear(); v.drawFold(fo, t*Math.PI*0.62); })) return;
+          if(!await this.wait(250*D)) return;
+          if(!await this.tween(600*D, t=>{ v.clear(); v.drawFold(fo, (1-t)*Math.PI*0.62); })) return;
+        } else {
+          if(!await this.tween(950*D, t=>{ v.clear(); v.drawFold(fo, t*Math.PI); })) return;
+          if(!await this.wait(150*D)) return;
+        }
+        if(g!==this.gen) return;
+      }
+      showAfter();
+      // dopo un segno, lascia vedere la riga di piega
+      for(const fo of folds) if(fo.mark){ const segs=lineInside(st.after, fo.a, fo.b); v.ctx.save(); v.ctx.strokeStyle=CREASE; v.ctx.lineWidth=v.k*0.016; v.ctx.setLineDash([v.k*.05,v.k*.04]); for(const [p,q] of segs){ v.ctx.beginPath(); v.ctx.moveTo(v.X(p[0]),v.Y(p[1])); v.ctx.lineTo(v.X(q[0]),v.Y(q[1])); v.ctx.stroke(); } v.ctx.restore(); }
+    } else if(st.kind==='flip'){
+      showBefore(); if(!await this.wait(500*D)) return;
+      if(!await this.tween(1000*D, t=>{ v.clear(); v.drawFlip(st.before, st.axis||'v', t*Math.PI); })) return;
+      showAfter();
+    } else if(st.kind==='turn'){
+      showBefore(); if(!await this.wait(400*D)) return;
+      if(!await this.tween(800*D, t=>{ v.clear(); v.drawTurn(st.before, st.deg*t); })) return;
+      showAfter();
+    } else { // set, cut, note: dissolvenza
+      showBefore();
+      if(st.kind==='cut' && st.segs){ for(const [p,q] of st.segs) v.dashedLine(p,q,'valle'); }
+      if(!await this.wait(700*D)) return;
+      if(!await this.tween(600*D, t=>{ v.clear(); v.ctx.globalAlpha=1-t; v.drawFaces(st.before); v.ctx.globalAlpha=t; v.drawFaces(st.after); v.ctx.globalAlpha=1; })) return;
+      showAfter();
+    }
+  }
+}
+
+// ------------------------------------------------------------------ interfaccia
+const app=document.getElementById('app');
+let player=null;
+function h(tag, attrs={}, ...kids){ const e=document.createElement(tag); for(const k in attrs){ if(k==='class') e.className=attrs[k]; else if(k.startsWith('on')) e.addEventListener(k.slice(2), attrs[k]); else if(k==='html') e.innerHTML=attrs[k]; else e.setAttribute(k, attrs[k]); } for(const k of kids){ if(k==null) continue; e.append(k.nodeType? k : document.createTextNode(k)); } return e; }
+const ICO={ back:'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>', next:'<svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>', prev:'<svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>', replay:'<svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8"/><path d="M4 4v5h5"/></svg>', home:'<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10H3z"/></svg>' };
+
+function thumb(canvas, model){
+  const v=new View(canvas, model); v.clear(); v.drawOps(model.finale_ops);
+}
+function tileModel(mi){
+  const cv=h('canvas'); const t=h('button',{class:'tile', onclick:()=>openModel(mi.c, mi.key)}, cv, h('div',{class:'nome'}, mi.nome), h('div',{class:'meta'}, mi.passi+' passi' + (mi.pezzi>1? ' · '+mi.pezzi+' fogli':'')));
+  loadModel(mi.c, mi.key).then(m=>{ requestAnimationFrame(()=>thumb(cv,m)); });
+  return t;
+}
+function topbar(title, back){
+  return h('div',{class:'top'}, back? h('button',{class:'back', html:ICO.back, 'aria-label':'Indietro', onclick:back}) : null, h('h1',{}, title));
+}
+function pageHome(){
+  if(player) player.stop(); player=null;
+  app.replaceChildren(
+    topbar('Origami passo passo'),
+    h('p',{class:'eyebrow'},'Prova subito'),
+    h('div',{class:'grid'}, ...catalogo.gratuiti.map(tileModel)),
+    h('p',{class:'eyebrow'},'Le cartelle'),
+    h('div',{style:'display:flex;flex-direction:column;gap:10px'}, ...catalogo.cartelle.map(c=>{
+      const ok=sbloccata(c.id);
+      return h('button',{class:'cart', onclick:()=>pageCartella(c.id)},
+        h('div',{class:'ico', style:'background:'+COLORI_CART[c.id]}, LETTERE[c.id]),
+        h('div',{class:'t'}, h('b',{}, c.nome), h('span',{}, c.prossimamente? 'In preparazione' : c.modelli.length+' modelli')),
+        h('div',{class:'pz'+(ok?' ok':'')}, c.prossimamente? '' : (ok? 'Aperta' : 'Offerta '+c.prezzo)));
+    })),
+    h('p',{class:'note'},'Versione di prova. I modelli vengono dai libri di Salvatore Siciliano: ogni piega è stata calcolata e verificata.')
+  );
+  location.hash='';
+}
+function pageCartella(id){
+  if(player) player.stop(); player=null;
+  const c=catalogo.cartelle.find(x=>x.id===id);
+  const kids=[topbar(c.nome, pageHome)];
+  if(c.prossimamente){
+    kids.push(h('div',{class:'lock'}, h('div',{class:'big'},'Pasqua'), h('p',{},'I venti modelli di Pasqua sono in preparazione.')));
+  } else if(!sbloccata(id)){
+    const big=h('div',{class:'big'}, 'Offerta '+c.prezzo);
+    const nota=h('p',{class:'note'},'In questa prova l\'offerta non è ancora attiva: il pulsante apre la cartella subito.');
+    const bOff=h('button',{class:'btn main', style:'width:100%', onclick:async()=>{
+      bOff.disabled=true; const r=await faiOfferta(id); bOff.disabled=false;
+      if(r==='aperta') pageCartella(id);
+      else if(r==='rete') nota.textContent='Google Play non risponde. Controlla la connessione e riprova.';
+      else if(r==='errore') nota.textContent='L\'offerta non è andata a buon fine. Riprova tra poco.';
+    }}, 'Fai la tua offerta');
+    dettaglioOfferta(id).then(d=>{
+      if(!big.isConnected) return;
+      if(d==='errore') nota.textContent='Google Play non risponde. Controlla la connessione e riprova.';
+      else if(d){ big.textContent='Offerta '+prezzoDa(d, c.prezzo); nota.textContent='L\'offerta passa da Google Play. La fa un grande.'; }
+    });
+    kids.push(h('div',{class:'lock'},
+      big,
+      h('p',{}, 'Con un\'offerta di un euro apri la cartella '+c.nome+' e tieni per sempre i suoi '+c.modelli.length+' modelli.'),
+      bOff,
+      nota),
+      h('p',{class:'eyebrow'},'Cosa c\'è dentro'),
+      h('div',{class:'grid', style:'opacity:.55;pointer-events:none'}, ...c.modelli.slice(0,4).map(tileModel)));
+  } else {
+    kids.push(h('div',{class:'grid'}, ...c.modelli.map(tileModel)));
+  }
+  app.replaceChildren(...kids);
+}
+async function openModel(c, key){
+  if(player) player.stop(); player=null;
+  const m=await loadModel(c,key);
+  const cv=h('canvas'); const pill=h('div',{class:'pill'}); const cap=h('div',{class:'cap'}); const hint=h('div',{class:'note', style:'margin-top:-6px'},'Tocca il foglio per vedere la piega in movimento.'); const dots=h('div',{class:'dots'});
+  const bPrev=h('button',{class:'btn sq', html:ICO.prev, 'aria-label':'Passo precedente'}); const bRe=h('button',{class:'btn sq', html:ICO.replay, 'aria-label':'Rivedi'}); const bNext=h('button',{class:'btn main'}, 'Avanti ', h('span',{html:ICO.next}));
+  const info=h('div',{class:'info'},
+    h('h3',{},'Prima di cominciare'), h('p',{}, m.intro || ('Ti serve un foglio '+m.foglio+'.')),
+    m.consiglio? h('p',{}, h('b',{},'Consiglio. '), m.consiglio) : null,
+    m.curiosita? h('p',{}, h('b',{},'Lo sai che… '), m.curiosita) : null);
+  const back=()=>pageCartella(c);
+  app.replaceChildren(topbar(m.nome, back), h('div',{class:'stage'}, cv, pill), hint, cap, h('div',{class:'ctrl'}, bPrev, bRe, bNext), dots, info);
+  const v=new View(cv, m);
+  for(let i=0;i<m.steps.length+1;i++) dots.append(h('i'));
+  player=new Player(v, m, p=>{
+    const last=p.i===p.n-1;
+    pill.textContent= last? 'Fatto' : 'Passo '+(p.i+1)+' di '+(p.n-1);
+    cap.replaceChildren(last? h('b',{},'') : h('b',{}, (p.i+1)+'.'), last? m.finale_cap : m.steps[p.i].cap);
+    bPrev.disabled=p.i===0; bNext.replaceChildren(last? 'Torna alla cartella' : 'Avanti ', last? null : h('span',{html:ICO.next}));
+    bRe.disabled=last;
+    [...dots.children].forEach((d,i)=>{ d.className= i<p.i? 'done' : i===p.i? 'on':''; });
+  });
+  bPrev.onclick=()=>player.go(player.i-1); bRe.onclick=()=>player.play(true);
+  bNext.onclick=()=>{ if(player.i===player.n-1) back(); else player.go(player.i+1); };
+  cv.onclick=()=>player.play(true);
+  const myPlayer=player;
+  new ResizeObserver(()=>{ if(player!==myPlayer || !cv.isConnected) return; v.resize(); player.play(); }).observe(cv);
+  player.go(0);
+}
+fetch(CAT_URL).then(r=>r.json()).then(c=>{ catalogo=c; pageHome(); ripristinaOfferte().then(n=>{ if(n && app.querySelector('.cart')) pageHome(); }); }).catch(e=>{ app.replaceChildren(h('p',{},'Non riesco a caricare i modelli. '+e)); });
+if('serviceWorker' in navigator && location.protocol!=='file:'){ addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }); }
+</script>
+
+</body></html>

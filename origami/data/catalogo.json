@@ -1,0 +1,709 @@
+{
+ "immagini": [
+  "halloween/02_fantasma"
+ ],
+ "gratuiti": [
+  {
+   "c": "liberi",
+   "key": "09_cuore",
+   "nome": "Il Cuore",
+   "diff": 1,
+   "passi": 5,
+   "pezzi": 1
+  },
+  {
+   "c": "halloween",
+   "key": "02_fantasma",
+   "nome": "Il Fantasma",
+   "diff": 1,
+   "passi": 6,
+   "pezzi": 1
+  },
+  {
+   "c": "natale",
+   "key": "08_pinguino",
+   "nome": "Il Pinguino",
+   "diff": 2,
+   "passi": 6,
+   "pezzi": 1
+  },
+  {
+   "c": "liberi",
+   "key": "08_volpe",
+   "nome": "La Volpe",
+   "diff": 1,
+   "passi": 6,
+   "pezzi": 1
+  }
+ ],
+ "cartelle": [
+  {
+   "id": "halloween",
+   "nome": "Halloween",
+   "prezzo": "1,00 €",
+   "modelli": [
+    {
+     "c": "halloween",
+     "key": "01_pipistrello",
+     "nome": "Il Pipistrello",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "02_fantasma",
+     "nome": "Il Fantasma",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "04_gatto",
+     "nome": "Il Gatto Nero",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "05_cappello",
+     "nome": "Il Cappello da Strega",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "17_candela",
+     "nome": "La Candela",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 2
+    },
+    {
+     "c": "halloween",
+     "key": "12_lapide",
+     "nome": "La Lapide",
+     "diff": 1,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "13_luna",
+     "nome": "La Luna Piena",
+     "diff": 1,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "14_cilindro",
+     "nome": "Il Cilindro del Vampiro",
+     "diff": 1,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "23_serpente",
+     "nome": "Il Serpente",
+     "diff": 1,
+     "passi": 9,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "18_caramella",
+     "nome": "La Caramella",
+     "diff": 1,
+     "passi": 10,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "07_gufo",
+     "nome": "Il Gufo",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "08_corvo",
+     "nome": "Il Corvo",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "21_vampiro",
+     "nome": "Il Vampiro",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "24_lupo",
+     "nome": "Il Lupo",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "11_bara",
+     "nome": "La Bara",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "16_calderone",
+     "nome": "Il Calderone",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "22_rospo",
+     "nome": "Il Rospo",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 2
+    },
+    {
+     "c": "halloween",
+     "key": "09_teschio",
+     "nome": "Il Teschio",
+     "diff": 2,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "10_mummia",
+     "nome": "La Mummia",
+     "diff": 2,
+     "passi": 10,
+     "pezzi": 1
+    },
+    {
+     "c": "halloween",
+     "key": "03_zucca",
+     "nome": "La Zucca",
+     "diff": 2,
+     "passi": 11,
+     "pezzi": 1
+    }
+   ]
+  },
+  {
+   "id": "natale",
+   "nome": "Natale",
+   "prezzo": "1,00 €",
+   "modelli": [
+    {
+     "c": "natale",
+     "key": "12_busta",
+     "nome": "La Busta per la Letterina",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "01_albero",
+     "nome": "L'Albero di Natale",
+     "diff": 1,
+     "passi": 7,
+     "pezzi": 4
+    },
+    {
+     "c": "natale",
+     "key": "03_cappello",
+     "nome": "Il Cappello di Babbo Natale",
+     "diff": 1,
+     "passi": 8,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "17_pacchetto",
+     "nome": "Il Pacchetto Regalo",
+     "diff": 1,
+     "passi": 8,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "09_pettirosso",
+     "nome": "Il Pettirosso",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "08_pinguino",
+     "nome": "Il Pinguino",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "10_colomba",
+     "nome": "La Colomba",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "11_sacco",
+     "nome": "Il Sacco di Babbo Natale",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "04_babbo",
+     "nome": "La Faccia di Babbo Natale",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "07_pigna",
+     "nome": "La Pigna",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "18_fiocco",
+     "nome": "Il Fiocco",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "02_casetta",
+     "nome": "La Casetta di Marzapane",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "06_campana",
+     "nome": "La Campana",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "05_stella",
+     "nome": "La Stella di Natale",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 5
+    },
+    {
+     "c": "natale",
+     "key": "13_asinello",
+     "nome": "L'Asinello",
+     "diff": 2,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "14_pupazzo",
+     "nome": "Il Pupazzo di Neve",
+     "diff": 2,
+     "passi": 8,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "16_mangiatoia",
+     "nome": "Il Bambinello nella Mangiatoia",
+     "diff": 2,
+     "passi": 8,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "20_alberosoffietto",
+     "nome": "L'Albero a Soffietto",
+     "diff": 2,
+     "passi": 11,
+     "pezzi": 1
+    },
+    {
+     "c": "natale",
+     "key": "21_angelo",
+     "nome": "L'Angelo",
+     "diff": 3,
+     "passi": 7,
+     "pezzi": 2
+    },
+    {
+     "c": "natale",
+     "key": "15_renna",
+     "nome": "La Renna",
+     "diff": 3,
+     "passi": 8,
+     "pezzi": 2
+    }
+   ]
+  },
+  {
+   "id": "liberi",
+   "nome": "Liberi",
+   "prezzo": "1,00 €",
+   "modelli": [
+    {
+     "c": "liberi",
+     "key": "18_fiocco",
+     "nome": "Il Fiocco",
+     "diff": 1,
+     "passi": 4,
+     "pezzi": 2
+    },
+    {
+     "c": "liberi",
+     "key": "09_cuore",
+     "nome": "Il Cuore",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "21_busta",
+     "nome": "La Busta",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "15_papillon",
+     "nome": "La Cravatta a Farfalla",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 2
+    },
+    {
+     "c": "liberi",
+     "key": "08_volpe",
+     "nome": "La Volpe",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "10_farfalla",
+     "nome": "La Farfalla",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "03_aeroplanino",
+     "nome": "L'Aeroplanino",
+     "diff": 1,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "07_tulipano",
+     "nome": "Il Tulipano",
+     "diff": 1,
+     "passi": 10,
+     "pezzi": 2
+    },
+    {
+     "c": "liberi",
+     "key": "17_corona",
+     "nome": "La Corona Segnaposto",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "20_colomba",
+     "nome": "La Colomba",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "04_stella",
+     "nome": "La Stella",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 8
+    },
+    {
+     "c": "liberi",
+     "key": "22_omino",
+     "nome": "L'Omino",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "23_donna",
+     "nome": "La Donna",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "05_rana",
+     "nome": "La Rana",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 2
+    },
+    {
+     "c": "liberi",
+     "key": "13_rosa",
+     "nome": "La Rosa",
+     "diff": 2,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "14_cravatta",
+     "nome": "La Cravatta",
+     "diff": 2,
+     "passi": 8,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "06_cigno",
+     "nome": "Il Cigno",
+     "diff": 2,
+     "passi": 9,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "12_aliante",
+     "nome": "L'Aliante",
+     "diff": 2,
+     "passi": 10,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "02_barchetta",
+     "nome": "La Barchetta",
+     "diff": 2,
+     "passi": 13,
+     "pezzi": 1
+    },
+    {
+     "c": "liberi",
+     "key": "01_gru",
+     "nome": "La Gru",
+     "diff": 3,
+     "passi": 17,
+     "pezzi": 1
+    }
+   ]
+  },
+  {
+   "id": "pasqua",
+   "nome": "Pasqua",
+   "prezzo": "1,00 €",
+   "modelli": [
+    {
+     "c": "pasqua",
+     "key": "02_carota",
+     "nome": "La Carota",
+     "diff": 1,
+     "passi": 4,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "03_aquilone",
+     "nome": "L'Aquilone di Pasquetta",
+     "diff": 1,
+     "passi": 4,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "04_foglia",
+     "nome": "La Foglia di Primavera",
+     "diff": 1,
+     "passi": 4,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "08_pesce",
+     "nome": "Il Pesce d'Aprile",
+     "diff": 1,
+     "passi": 4,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "20_pecorella",
+     "nome": "La Pecorella",
+     "diff": 1,
+     "passi": 4,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "05_fragola",
+     "nome": "La Fragola",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "06_pulcino",
+     "nome": "Il Pulcino",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "07_agnellino",
+     "nome": "Il Muso dell'Agnellino",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "13_croce",
+     "nome": "La Croce di Pasqua",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 2
+    },
+    {
+     "c": "pasqua",
+     "key": "14_cestino",
+     "nome": "Il Cestino delle Uova",
+     "diff": 1,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "01_uovo",
+     "nome": "L'Uovo di Pasqua",
+     "diff": 1,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "16_sole",
+     "nome": "Il Sole di Primavera",
+     "diff": 2,
+     "passi": 4,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "09_coniglio",
+     "nome": "Il Muso del Coniglio",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "12_gallina",
+     "nome": "La Gallina",
+     "diff": 2,
+     "passi": 5,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "10_coccinella",
+     "nome": "La Coccinella",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "11_pulcinouovo",
+     "nome": "Il Pulcino nell'Uovo",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "15_ape",
+     "nome": "L'Ape di Primavera",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 1
+    },
+    {
+     "c": "pasqua",
+     "key": "18_cuddura",
+     "nome": "La Cuddura con l'Uovo",
+     "diff": 2,
+     "passi": 6,
+     "pezzi": 2
+    },
+    {
+     "c": "pasqua",
+     "key": "19_calla",
+     "nome": "La Calla di Pasqua",
+     "diff": 2,
+     "passi": 7,
+     "pezzi": 2
+    },
+    {
+     "c": "pasqua",
+     "key": "17_coniglietto",
+     "nome": "Il Coniglietto Seduto",
+     "diff": 2,
+     "passi": 9,
+     "pezzi": 2
+    }
+   ]
+  }
+ ]
+}

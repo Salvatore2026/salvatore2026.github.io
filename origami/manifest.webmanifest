@@ -1,0 +1,17 @@
+{
+  "name": "Origami Passo Passo",
+  "short_name": "Origami",
+  "description": "Guida passo per passo ai modelli di origami di Salvatore Siciliano, con il foglio che si piega sullo schermo.",
+  "lang": "it",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F3EBDD",
+  "theme_color": "#F3EBDD",
+  "icons": [
+    { "src": "icone/icona-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icone/icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icone/icona-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
