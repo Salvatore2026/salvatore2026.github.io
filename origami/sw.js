@@ -1,6 +1,6 @@
 // Service worker di Origami Passo Passo: tiene in memoria tutta l'app, cosi' funziona anche senza rete.
 // File generato da strumenti/aggiorna_sw.py: non modificarlo a mano.
-const VERSIONE = 'origami-138daf78d9';
+const VERSIONE = 'origami-eeb34cc956';
 const FILE = [
  "./",
  "index.html",

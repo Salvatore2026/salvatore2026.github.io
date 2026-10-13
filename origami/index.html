@@ -514,7 +514,7 @@ async function openModel(c, key){
     const last=p.i===p.n-1;
     pill.textContent= last? 'Fatto' : 'Passo '+(p.i+1)+' di '+(p.n-1);
     cap.replaceChildren(last? h('b',{},'') : h('b',{}, (p.i+1)+'.'), last? m.finale_cap : m.steps[p.i].cap);
-    bPrev.disabled=p.i===0; bNext.replaceChildren(last? 'Torna alla cartella' : 'Avanti ', last? null : h('span',{html:ICO.next}));
+    bPrev.disabled=p.i===0; bNext.replaceChildren(...(last? ['Torna alla cartella'] : ['Avanti ', h('span',{html:ICO.next})]));
     bRe.disabled=last;
     [...dots.children].forEach((d,i)=>{ d.className= i<p.i? 'done' : i===p.i? 'on':''; });
   });
