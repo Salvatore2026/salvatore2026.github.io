@@ -1,11 +1,28 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.salvatore.simluce",
-    "sha256_cert_fingerprints": [
-      "F8:73:9E:1B:F2:68:50:9D:0B:8B:4D:94:C6:A9:8E:26:DA:38:EB:A4:40:60:11:87:A3:99:D1:60:4D:E3:0D:6E",
-      "6E:81:66:EC:B4:B6:D7:42:50:87:AA:B9:5D:5D:47:D0:00:7D:9B:EE:75:64:E7:FA:62:FB:7D:A8:84:2A:8E:5E"
-    ]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.salvatore.simluce",
+      "sha256_cert_fingerprints": [
+        "F8:73:9E:1B:F2:68:50:9D:0B:8B:4D:94:C6:A9:8E:26:DA:38:EB:A4:40:60:11:87:A3:99:D1:60:4D:E3:0D:6E",
+        "6E:81:66:EC:B4:B6:D7:42:50:87:AA:B9:5D:5D:47:D0:00:7D:9B:EE:75:64:E7:FA:62:FB:7D:A8:84:2A:8E:5E"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.salvatore.origami",
+      "sha256_cert_fingerprints": [
+        "A2:4C:71:3F:0C:23:7F:D0:4C:AE:BA:17:D7:9A:24:23:C5:A0:9D:81:EE:F3:12:6C:5C:CC:8D:AE:C1:15:EC:2A",
+        "5C:C4:44:10:1A:9A:D6:75:52:7F:BE:10:7B:B8:66:15:4C:A4:69:CD:46:DE:2D:39:C8:1C:B0:FA:21:D6:17:DB"
+      ]
+    }
   }
-}]
+]
